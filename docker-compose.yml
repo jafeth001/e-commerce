@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  app:
+    image: ecommerce
+    ports:
+      - 8085:8085
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/e_commerce_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: jafeth21
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      DATABASE_HOST: docker-mysql
+      DATABASE_PORT: 3306
+      MYSQL_ROOT_PASSWORD: jafeth21
+      MYSQL_DATABASE: e_commerce_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: jafeth21
+
